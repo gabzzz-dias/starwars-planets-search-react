@@ -7,7 +7,7 @@ function TableHeader() {
 
   return (
     <thead>
-      { createTableHdr(Object.keys(data.results[0]).filter((e) => e !== 'residents')) }
+      { createTableHdr(Object.keys(data[0]).filter((e) => e !== 'residents')) }
     </thead>
   );
 }

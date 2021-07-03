@@ -5,17 +5,29 @@ import fetchPlanets from '../services/api';
 
 function PlanetsProvider({ children }) {
   const [data, setData] = useState([]);
+  const [filters, setFilters] = useState({
+    filterByName: {
+      name: '',
+    },
+  });
 
   useEffect(() => {
     const getPlanets = async () => {
       const response = await fetchPlanets();
-      setData(response);
+      setData(response.results);
     };
     getPlanets();
   }, []);
 
+  const context = {
+    data,
+    setData,
+    filters,
+    setFilters,
+  };
+
   return (
-    <PlanetsContext.Provider value={ { data } }>
+    <PlanetsContext.Provider value={ context }>
       {children}
     </PlanetsContext.Provider>
   );

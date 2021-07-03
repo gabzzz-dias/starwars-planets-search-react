@@ -2,44 +2,24 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function TableBody() {
-  const { data } = useContext(PlanetsContext);
-  console.log(data);
-  console.log(Object.keys(data));
+  const { data, filters } = useContext(PlanetsContext);
 
   return (
     <tbody>
-      { data.results.map((
-        { name,
-          rotation_period: rotationPeriod,
-          orbital_period: orbitalPeriod,
-          diameter,
-          climate,
-          gravity,
-          terrain,
-          surface_water: surfaceWater,
-          population,
-          films,
-          created,
-          edited,
-          url,
-        },
-      ) => (
-        <tr key={ name }>
-          <td>{ name }</td>
-          <td>{ rotationPeriod }</td>
-          <td>{ orbitalPeriod }</td>
-          <td>{ diameter }</td>
-          <td>{ climate }</td>
-          <td>{ gravity }</td>
-          <td>{ terrain }</td>
-          <td>{ surfaceWater }</td>
-          <td>{ population }</td>
-          <td>{ films }</td>
-          <td>{ created }</td>
-          <td>{ edited }</td>
-          <td>{ url }</td>
-        </tr>
-      )) }
+      {
+        data
+          .filter((planets) => (planets.name.toLowerCase()
+            .includes(filters.filterByName.name)))
+          .map((p, index) => (
+            <tr key={ index }>
+              {Object.values(p)
+                .map((pn) => (
+                // eslint-disable-next-line react/jsx-key
+                  <td>{ pn }</td>
+                ))}
+            </tr>
+          ))
+      }
     </tbody>
   );
 }
