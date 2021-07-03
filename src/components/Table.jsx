@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 // import Filters from './Filters';
 import PlanetsContext from '../context/PlanetsContext';
-import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 
 function Table() {
@@ -15,10 +14,7 @@ function Table() {
   return (
     <div>
       { renderPlanetList && (
-        <table>
-          <TableHeader />
-          <TableBody />
-        </table>
+        <TableBody />
       ) }
     </div>
   );
