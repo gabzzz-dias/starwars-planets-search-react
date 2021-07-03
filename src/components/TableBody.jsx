@@ -14,8 +14,7 @@ function TableBody() {
             <tr key={ index }>
               {Object.values(p)
                 .map((pn) => (
-                // eslint-disable-next-line react/jsx-key
-                  <td>{ pn }</td>
+                  <td key={ pn }>{ pn }</td>
                 ))}
             </tr>
           ))
