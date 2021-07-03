@@ -73,4 +73,6 @@ PlanetsProvider.propTypes = {
   children: PropTypes.element,
 }.isRequired;
 
+// Agradecimentos super especiais a Gildeir Rodrigues e Daniel Roberto por termos passado a madrugada terminando esse projeto juntos. aprendi muito com eles e serei eternamente grato.
+
 export default PlanetsProvider;
